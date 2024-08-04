@@ -1,0 +1,40 @@
+{
+  "name": "blogs",
+  "version": "1.0.0",
+  "description": "Rich-Panel-Assignment",
+  "main": "build/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run clean && npm run build && node --inspect=0.0.0.0:9229 build/server.js",
+    "dev": "ts-node src/server.ts",
+    "clean": "rimraf build"
+  },
+  "author": "Pankaj Verma",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "pg": "^8.12.0",
+    "redis": "^4.7.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.0.4",
+    "winston": "^3.13.1",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^22.1.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2"
+  }
+}

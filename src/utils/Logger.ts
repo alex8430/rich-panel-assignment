@@ -1,0 +1,46 @@
+import { createLogger, format, transports, Logger } from 'winston';
+import { existsSync, mkdirSync } from 'fs';
+import { resolve } from 'path';
+import DailyRotateFile from 'winston-daily-rotate-file';
+import { logDirectory, environment } from '../config/config';
+
+const dir = logDirectory || resolve('logs');
+
+// Ensure log directory exists
+if (!existsSync(dir)) {
+    mkdirSync(dir);
+}
+
+const logLevel = environment === 'development' ? 'debug' : 'warn';
+
+const dailyRotateFile = new DailyRotateFile({
+    level: logLevel,
+    filename: `${dir}/%DATE%.log`,
+    datePattern: 'YYYY-MM-DD',
+    zippedArchive: true,
+    handleExceptions: true,
+    maxSize: '20m',
+    maxFiles: '14d',
+    format: format.combine(
+        format.errors({ stack: true }),
+        format.timestamp(),
+        format.json()
+    ),
+});
+
+const logger: Logger = createLogger({
+    transports: [
+        new transports.Console({
+            level: logLevel,
+            format: format.combine(
+                format.errors({ stack: true }),
+                format.prettyPrint()
+            ),
+        }),
+        dailyRotateFile,
+    ],
+    exceptionHandlers: [dailyRotateFile],
+    exitOnError: false,
+});
+
+export default logger;
