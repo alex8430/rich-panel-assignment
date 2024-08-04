@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "a9ec26a3-b6ec-414a-ac5f-f08b3eb07fe7",
+		"name": "RichPanel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24350189"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test\",\n    \"email\":\"xyz@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/signup",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"asdf@gmail.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"My First Post by abc user\",\n    \"content\": \"What is Lorem Ipsum Second? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/posts",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/posts/77c67479-327a-4039-97e9-68cc428dd4db",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"posts",
+						"77c67479-327a-4039-97e9-68cc428dd4db"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test Update\",\n    \"content\": \"What is Lorem Ipsum Update? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/posts/3c4b5eb2-25cf-4533-be76-648f9afae30f",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"posts",
+						"3c4b5eb2-25cf-4533-be76-648f9afae30f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post By ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/posts/9547212f-7f72-4bd0-90c1-39db7925edb5",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"posts",
+						"9547212f-7f72-4bd0-90c1-39db7925edb5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ALL Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/posts?page=1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
